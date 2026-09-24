@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SamAr Digital — a remote digital studio building websites, tools, digital products and growth systems.">
+<title>SamAr Digital — Build. Solve. Grow.</title>
+<link rel="icon" href="favicon.ico">
+<style>
+:root{
+  --bg:#080808; --surface:#111; --surface2:#171717; --text:#f5f5f5;
+  --muted:#a3a3a3; --line:#292929; --accent:#b7ff35; --accent2:#d9ff9a;
+  --max:1180px; --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:1000;background:rgba(8,8,8,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;letter-spacing:-.04em;font-size:1.1rem}
+.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:24px;list-style:none}
+.navlinks a{font-size:.9rem;color:#bbb;transition:.25s}
+.navlinks a:hover{color:#fff}
+.menu{display:none;border:0;background:none;color:#fff;font-size:1.5rem}
+
+.hero{min-height:calc(100vh - 74px);display:grid;place-items:center;position:relative;overflow:hidden}
+.orb{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(183,255,53,.16),transparent 68%);filter:blur(12px);animation:float 7s ease-in-out infinite}
+.orb.one{left:-250px;top:5%}.orb.two{right:-280px;bottom:-10%;animation-delay:-3s}
+@keyframes float{50%{transform:translateY(-28px) scale(1.05)}}
+.hero-inner{text-align:center;max-width:900px;position:relative;z-index:1;padding:100px 0}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:7px 13px;color:#cfcfcf;font-size:.78rem;margin-bottom:24px;background:rgba(255,255,255,.025)}
+.dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 18px var(--accent)}
+h1{font-size:clamp(4rem,10vw,8.5rem);line-height:.88;letter-spacing:-.075em;font-weight:950}
+.gradient{background:linear-gradient(120deg,#fff 25%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:680px;margin:28px auto 34px;color:#aaa;font-size:1.12rem}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{padding:13px 20px;border-radius:999px;border:1px solid var(--line);display:inline-flex;align-items:center;gap:8px;font-weight:750;transition:.25s}
+.btn.primary{background:var(--accent);color:#080808;border-color:var(--accent)}
+.btn:hover{transform:translateY(-3px)}
+.btn.secondary:hover{border-color:#555;background:#151515}
+
+.section{padding:110px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
+.kicker{color:var(--accent);text-transform:uppercase;letter-spacing:.15em;font-size:.72rem;font-weight:800}
+h2{font-size:clamp(2.3rem,5vw,4.5rem);line-height:.95;letter-spacing:-.055em;margin-top:8px}
+.section-head p{max-width:420px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:linear-gradient(145deg,#141414,#0d0d0d);border:1px solid var(--line);border-radius:var(--radius);padding:28px;min-height:240px;transition:.3s;position:relative;overflow:hidden}
+.card:after{content:"";position:absolute;width:140px;height:140px;background:radial-gradient(circle,rgba(183,255,53,.1),transparent 70%);right:-60px;top:-60px}
+.card:hover{transform:translateY(-7px);border-color:#454545}
+.num{color:#666;font-size:.75rem;font-weight:800}
+.card h3{font-size:1.35rem;margin:45px 0 9px;letter-spacing:-.03em}
+.card p{color:#999;font-size:.92rem}
+.arrow{position:absolute;bottom:25px;right:27px;color:var(--accent)}
+
+.work-card{min-height:360px;padding:0;display:flex;flex-direction:column}
+.project-visual{height:190px;background:linear-gradient(135deg,#1c1c1c,#0a0a0a);display:grid;place-items:center;border-bottom:1px solid var(--line);font-weight:900;font-size:2rem;letter-spacing:-.05em}
+.project-body{padding:22px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}
+.tag{font-size:.68rem;border:1px solid #303030;padding:4px 8px;border-radius:999px;color:#aaa}
+
+.about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about p{color:#aaa;font-size:1.05rem;margin-top:20px}
+.statement{font-size:clamp(2rem,4vw,4rem);line-height:1;letter-spacing:-.05em}
+.statement span{color:#666}
+
+.cta{border:1px solid #343434;border-radius:30px;padding:70px 40px;text-align:center;background:radial-gradient(circle at center,rgba(183,255,53,.09),transparent 55%),#101010}
+.cta p{color:#999;max-width:600px;margin:20px auto 28px}
+
+footer{border-top:1px solid var(--line);padding:35px 0;color:#777}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.social{display:flex;gap:16px}
+.social a:hover{color:var(--accent)}
+
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:800px){
+  .navlinks{display:none;position:absolute;top:74px;left:0;right:0;background:#090909;border-bottom:1px solid var(--line);padding:20px;flex-direction:column}
+  .navlinks.open{display:flex}.menu{display:block}
+  .grid{grid-template-columns:1fr}.about{grid-template-columns:1fr}
+  .section-head{display:block}.section-head p{margin-top:18px}
+  .hero-inner{padding:75px 0}
+  .footer-row{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#start">SAM<span>AR</span> DIGITAL</a>
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+    <nav>
+      <ul class="navlinks" id="navlinks">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#marketplace">Marketplace</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="start">
+  <div class="orb one"></div><div class="orb two"></div>
+  <div class="container hero-inner reveal">
+    <div class="eyebrow"><span class="dot"></span> Remote Digital Studio · SamAr 2.0</div>
+    <h1>BUILD.<br><span class="gradient">SOLVE.</span><br>GROW.</h1>
+    <p>We build digital experiences, practical tools and growth systems for businesses, creators and people solving real problems.</p>
+    <div class="actions">
+      <a class="btn primary" href="#work">Explore SamAr ↗</a>
+      <a class="btn secondary" href="#contact">Start a Project</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+<div class="container">
+  <div class="section-head reveal">
+    <div><div class="kicker">01 / Real Work</div><h2>Built for the real world.</h2></div>
+    <p>No imaginary case studies. This space is for actual websites, products and experiments built by SamAr.</p>
+  </div>
+  <div class="grid">
+    <article class="card work-card reveal"><div class="project-visual">INAR</div><div class="project-body"><h3>INAR Clothing</h3><p>Luxury/minimal e-commerce experience with Kashmiri-inspired positioning.</p><div class="tags"><span class="tag">E-commerce</span><span class="tag">Brand</span><span class="tag">Web</span></div></div></article>
+    <article class="card work-card reveal"><div class="project-visual">ARTCRAFT</div><div class="project-body"><h3>ArtCraft Hangers</h3><p>Product enquiry experience designed around WhatsApp conversion.</p><div class="tags"><span class="tag">Landing Page</span><span class="tag">Conversion</span><span class="tag">WhatsApp</span></div></div></article>
+    <article class="card work-card reveal"><div class="project-visual">SAMAR</div><div class="project-body"><h3>SamAr Digital</h3><p>The evolving digital headquarters behind the studio and product ecosystem.</p><div class="tags"><span class="tag">Studio</span><span class="tag">Strategy</span><span class="tag">Brand</span></div></div></article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="tools">
+<div class="container">
+  <div class="section-head reveal">
+    <div><div class="kicker">02 / Tools</div><h2>Ideas that become useful.</h2></div>
+    <p>Independent tools and software experiments built to solve specific problems.</p>
+  </div>
+  <div class="grid">
+    <article class="card reveal"><span class="num">TOOL 01</span><h3>Career Toolkit</h3><p>Practical tools for students, job seekers and professionals.</p><span class="arrow">↗</span></article>
+    <article class="card reveal"><span class="num">TOOL 02</span><h3>Examlytics</h3><p>Offline board-paper pattern analysis for focused exam preparation.</p><span class="arrow">↗</span></article>
+    <article class="card reveal"><span class="num">TOOL 03</span><h3>QRLock</h3><p>A local QR-style unlock concept built as a desktop utility.</p><span class="arrow">↗</span></article>
+    <article class="card reveal"><span class="num">TOOL 04</span><h3>Adlytic</h3><p>A marketing analysis concept for campaign, budget and performance thinking.</p><span class="arrow">↗</span></article>
+    <article class="card reveal"><span class="num">TOOL 05</span><h3>Clipper</h3><p>A creator-focused YouTube-to-clips workflow concept.</p><span class="arrow">↗</span></article>
+    <article class="card reveal"><span class="num">COMING</span><h3>More Tools</h3><p>New experiments will appear here as they become useful enough to ship.</p><span class="arrow">→</span></article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="studio">
+<div class="container">
+  <div class="section-head reveal">
+    <div><div class="kicker">03 / Studio</div><h2>Custom solutions.</h2></div>
+    <p>The Studio is where SamAr works with businesses and creators on problems that need a custom digital solution.</p>
+  </div>
+  <div class="grid">
+    <article class="card reveal"><span class="num">WEB</span><h3>Web Experiences</h3><p>Landing pages, business websites, e-commerce experiences and conversion-focused interfaces.</p></article>
+    <article class="card reveal"><span class="num">GROWTH</span><h3>Growth Systems</h3><p>Lead-generation funnels, campaign strategy and conversion paths built around measurable actions.</p></article>
+    <article class="card reveal"><span class="num">AUTOMATION</span><h3>Digital Automation</h3><p>Practical AI and workflow automation for repetitive business processes.</p></article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="marketplace">
+<div class="container">
+  <div class="section-head reveal">
+    <div><div class="kicker">04 / Marketplace</div><h2>Useful things. One place.</h2></div>
+    <p>A future product layer for SamAr tools, templates, digital resources and selected recommendations.</p>
+  </div>
+  <div class="grid">
+    <article class="card reveal"><span class="num">PRODUCTS</span><h3>Digital Products</h3><p>Templates, systems and resources designed to save time and make digital work easier.</p></article>
+    <article class="card reveal"><span class="num">TOOLS</span><h3>SamAr Products</h3><p>Discover standalone tools developed under the SamAr ecosystem.</p></article>
+    <article class="card reveal"><span class="num">PICKS</span><h3>SamAr Picks</h3><p>Curated products and useful recommendations, kept separate from the core studio service layer.</p></article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="container about">
+  <div class="reveal">
+    <div class="kicker">05 / About</div>
+    <div class="statement">Research.<br>Experiment.<br><span>Build.</span><br>Solve.</div>
+  </div>
+  <div class="reveal">
+    <p>SamAr Digital is being built as a remote-first digital studio — combining research, design, technology and marketing to turn problems into practical digital solutions.</p>
+    <p>The philosophy is simple: build things that are useful, document what works, learn from what doesn't, and keep improving.</p>
+    <div class="actions" style="justify-content:flex-start;margin-top:28px">
+      <a class="btn secondary" href="https://samar-digital.github.io/Portfolio/" target="_blank">View Full Portfolio ↗</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="container">
+  <div class="cta reveal">
+    <div class="kicker">06 / Start</div>
+    <h2>Have a problem worth solving?</h2>
+    <p>Tell SamAr what you're trying to build, improve or launch. Let's start with the problem — then choose the right solution.</p>
+    <div class="actions">
+      <a class="btn primary" href="lead.html">Start a Project ↗</a>
+      <a class="btn secondary" href="https://instagram.com/sam_ardigital" target="_blank">Instagram</a>
+      <a class="btn secondary" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container footer-row">
+  <div>© 2026 <strong>SamAr Digital & Co.</strong> · Remote Digital Studio</div>
+  <div class="social"><a href="https://instagram.com/sam_ardigital" target="_blank">Instagram</a><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a><a href="https://samar-digital.github.io/Portfolio/" target="_blank">Portfolio</a></div>
+</div>
+</footer>
+
+<script>
+const menu=document.getElementById('menu'), nav=document.getElementById('navlinks');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

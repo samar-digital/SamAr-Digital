@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Start a project with SamAr Digital & Co.">
+<meta name="theme-color" content="#080808">
+<title>Start a Project — SamAr Digital</title>
+<style>
+:root{--bg:#070707;--surface:#101010;--line:#2b2b2b;--text:#f5f5f5;--muted:#999;--accent:#b7ff35;--danger:#ff6b6b;--radius:22px;--max:1120px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 10% 0%,rgba(183,255,53,.07),transparent 32%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.55;min-height:100vh}
+a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.container{width:min(var(--max),calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:100;background:rgba(7,7,7,.82);backdrop-filter:blur(18px);border-bottom:1px solid #171717}
+.nav{height:74px;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900;letter-spacing:-.04em}.logo span{color:var(--accent)}.back{color:#aaa;font-size:.9rem}.back:hover{color:#fff}
+main{padding:65px 0 100px}.hero{display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:end;margin-bottom:48px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:#bbb;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:22px}.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 15px var(--accent)}
+h1{font-size:clamp(3.3rem,7vw,6.6rem);line-height:.9;letter-spacing:-.075em;margin-bottom:25px}.gradient{color:var(--accent)}.hero-copy{color:var(--muted);font-size:1.05rem;max-width:650px}
+.trust{border-left:1px solid var(--line);padding-left:28px;color:#aaa}.trust strong{display:block;color:#fff;margin-bottom:7px}.trust p{font-size:.9rem}
+.form-shell{display:grid;grid-template-columns:1fr 310px;gap:18px;align-items:start}
+form,.side-card{background:linear-gradient(145deg,#121212,#0c0c0c);border:1px solid var(--line);border-radius:var(--radius)}
+form{padding:30px}.form-title{font-size:1.35rem;font-weight:800}.form-subtitle{color:#777;font-size:.84rem;margin-bottom:28px}
+.section-label{color:var(--accent);text-transform:uppercase;letter-spacing:.13em;font-size:.68rem;font-weight:850;margin:26px 0 13px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:14px}label{display:block;color:#d8d8d8;font-size:.78rem;font-weight:700;margin-bottom:7px}.required{color:var(--accent)}
+input,textarea,select{width:100%;border:1px solid #2d2d2d;background:#0a0a0a;color:#fff;border-radius:13px;outline:none;padding:13px 14px;transition:.2s}
+input::placeholder,textarea::placeholder{color:#555}input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(183,255,53,.08)}
+textarea{min-height:135px;resize:vertical}.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.chip input{position:absolute;opacity:0;pointer-events:none}.chip label{border:1px solid #2d2d2d;border-radius:12px;padding:12px;cursor:pointer;color:#999;margin:0}.chip label:hover{border-color:#555;color:#fff}.chip input:checked+label{border-color:var(--accent);background:rgba(183,255,53,.08);color:#fff}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:22px 0;color:#777;font-size:.76rem}.consent input{width:16px;height:16px;margin-top:2px;accent-color:var(--accent)}
+.submit{width:100%;border:0;background:var(--accent);color:#080808;border-radius:13px;padding:15px 18px;font-weight:900;cursor:pointer;transition:.25s}.submit:hover{transform:translateY(-2px)}.submit:disabled{opacity:.65;cursor:wait}
+.side{position:sticky;top:100px;display:grid;gap:14px}.side-card{padding:23px}.side-card h3{font-size:1rem;margin-bottom:9px}.side-card p{color:#858585;font-size:.84rem}
+.steps{list-style:none;display:grid;gap:14px;margin-top:16px}.steps li{display:flex;gap:11px;color:#999;font-size:.83rem}.step{width:23px;height:23px;min-width:23px;border:1px solid #3a3a3a;border-radius:50%;display:grid;place-items:center;color:var(--accent);font-size:.68rem;font-weight:800}
+.error{color:var(--danger);font-size:.75rem;margin-top:7px;display:none}.honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden}
+.privacy{font-size:.72rem!important;color:#626262!important;margin-top:14px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:#666;font-size:.78rem}.footer-row{display:flex;justify-content:space-between}
+@media(max-width:850px){.hero,.form-shell{grid-template-columns:1fr}.trust{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}.side{position:static}}
+@media(max-width:600px){.container{width:calc(100% - 24px)}main{padding-top:40px}form{padding:20px}.row,.chips{grid-template-columns:1fr}h1{font-size:3.5rem}.footer-row{flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+<a class="logo" href="index.html">SAM<span>AR</span> DIGITAL</a><a class="back" href="index.html">← Back to studio</a>
+</div></header>
+
+<main><div class="container">
+<section class="hero">
+<div><div class="eyebrow"><span class="dot"></span> SamAr Digital 2.0 · Project Enquiry</div>
+<h1>Let's build<br><span class="gradient">something useful.</span></h1>
+<p class="hero-copy">Tell SamAr what you're trying to build, improve or launch. This short form gives enough context to start a meaningful conversation.</p></div>
+<div class="trust"><strong>Problem first. Solution second.</strong><p>Your enquiry is converted into a structured WhatsApp message. No account or complicated client portal required.</p></div>
+</section>
+
+<section class="form-shell">
+<form id="projectForm" novalidate>
+<div class="form-title">Start a Project</div><div class="form-subtitle">Fields marked with * are required.</div>
+
+<div class="section-label">01 / Contact</div>
+<div class="row">
+<div class="field"><label for="name">Your name <span class="required">*</span></label><input id="name" type="text" placeholder="Your full name" required><div class="error" id="nameError">Please enter your name.</div></div>
+<div class="field"><label for="business">Business / brand</label><input id="business" type="text" placeholder="Your business or brand"></div>
+</div>
+<div class="row">
+<div class="field"><label for="phone">WhatsApp number <span class="required">*</span></label><input id="phone" type="tel" placeholder="+91 98765 43210" required><div class="error" id="phoneError">Please enter a valid WhatsApp number.</div></div>
+<div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com"></div>
+</div>
+
+<div class="section-label">02 / Project</div>
+<div class="field"><label>What do you need? <span class="required">*</span></label>
+<div class="chips">
+<div class="chip"><input id="website" type="radio" name="project" value="Business Website"><label for="website">Business Website</label></div>
+<div class="chip"><input id="landing" type="radio" name="project" value="Landing Page"><label for="landing">Landing Page</label></div>
+<div class="chip"><input id="ecommerce" type="radio" name="project" value="E-commerce"><label for="ecommerce">E-commerce</label></div>
+<div class="chip"><input id="funnel" type="radio" name="project" value="Lead Generation / Funnel"><label for="funnel">Lead Generation / Funnel</label></div>
+<div class="chip"><input id="automation" type="radio" name="project" value="Automation / AI Workflow"><label for="automation">Automation / AI Workflow</label></div>
+<div class="chip"><input id="tool" type="radio" name="project" value="Custom Tool / Software"><label for="tool">Custom Tool / Software</label></div>
+</div><div class="error" id="projectError">Please choose a project type.</div></div>
+
+<div class="field"><label for="problem">Tell me about the problem / project <span class="required">*</span></label><textarea id="problem" placeholder="What are you trying to achieve? What is currently not working? What would you like SamAr to build?" required></textarea><div class="error" id="problemError">Please describe your project briefly.</div></div>
+
+<div class="row">
+<div class="field"><label for="budget">Approx. budget</label><select id="budget"><option value="">Select a range</option><option>₹5,000 – ₹10,000</option><option>₹10,000 – ₹25,000</option><option>₹25,000 – ₹50,000</option><option>₹50,000 – ₹1,00,000</option><option>₹1,00,000+</option><option>Not sure yet</option></select></div>
+<div class="field"><label for="timeline">Preferred timeline</label><select id="timeline"><option value="">Select timeline</option><option>As soon as possible</option><option>Within 7 days</option><option>Within 2 weeks</option><option>Within 1 month</option><option>Flexible</option></select></div>
+</div>
+
+<div class="field"><label for="link">Existing website / social / reference link</label><input id="link" type="url" placeholder="https://example.com"></div>
+
+<div class="honeypot"><label for="website_url">Website URL</label><input id="website_url" type="text" tabindex="-1" autocomplete="off"></div>
+
+<label class="consent"><input id="consent" type="checkbox" required><span>I understand that submitting this form opens WhatsApp with my enquiry details so I can send them to SamAr Digital.</span></label>
+<button class="submit" id="submitBtn" type="submit">Continue to WhatsApp ↗</button>
+<div class="error" id="consentError">Please confirm before continuing.</div>
+<p class="privacy">No data is stored by this page. The form creates a WhatsApp message locally in your browser.</p>
+</form>
+
+<aside class="side">
+<div class="side-card"><h3>What happens next?</h3><ul class="steps">
+<li><span class="step">1</span><span>Fill in your project requirements.</span></li>
+<li><span class="step">2</span><span>Click “Continue to WhatsApp”.</span></li>
+<li><span class="step">3</span><span>WhatsApp opens with a ready-to-send enquiry.</span></li>
+<li><span class="step">4</span><span>SamAr reviews the requirement and replies.</span></li>
+</ul></div>
+<div class="side-card"><h3>Remote by design.</h3><p>Projects can be discussed, documented and delivered remotely.</p></div>
+<div class="side-card"><h3>Not ready for a project?</h3><p>You can still describe the problem. The first conversation is about understanding the requirement.</p></div>
+</aside>
+</section>
+</div></main>
+
+<footer><div class="container footer-row"><span>© 2026 SamAr Digital & Co.</span><span>Build. Solve. Grow.</span></div></footer>
+
+<script>
+/*
+  IMPORTANT:
+  Replace 919XXXXXXXXX with the WhatsApp number that should receive enquiries.
+  Use country code + number, digits only. Example: 919876543210
+*/
+const WHATSAPP_NUMBER="+919149619402";
+const form=document.getElementById("projectForm");
+const submitBtn=document.getElementById("submitBtn");
+
+function error(id,show){document.getElementById(id).style.display=show?"block":"none"}
+function clean(v){return String(v||"").trim()}
+function validPhone(v){const d=v.replace(/\D/g,"");return d.length>=10&&d.length<=15}
+
+form.addEventListener("submit",function(e){
+e.preventDefault();
+
+if(clean(document.getElementById("website_url").value)!=="")return;
+
+const name=clean(document.getElementById("name").value);
+const phone=clean(document.getElementById("phone").value);
+const business=clean(document.getElementById("business").value);
+const email=clean(document.getElementById("email").value);
+const problem=clean(document.getElementById("problem").value);
+const budget=clean(document.getElementById("budget").value)||"Not specified";
+const timeline=clean(document.getElementById("timeline").value)||"Not specified";
+const link=clean(document.getElementById("link").value)||"Not provided";
+const selected=document.querySelector('input[name="project"]:checked');
+const project=selected?selected.value:"";
+const consent=document.getElementById("consent").checked;
+
+const okName=name.length>=2,okPhone=validPhone(phone),okProject=!!project,okProblem=problem.length>=15;
+error("nameError",!okName);error("phoneError",!okPhone);error("projectError",!okProject);error("problemError",!okProblem);error("consentError",!consent);
+
+if(!okName||!okPhone||!okProject||!okProblem||!consent)return;
+
+if(WHATSAPP_NUMBER.includes("X")){
+alert("Please set your SamAr Digital WhatsApp number inside lead.html first.");
+return;
+}
+
+submitBtn.disabled=true;submitBtn.textContent="Opening WhatsApp…";
+
+const message=`🚀 NEW PROJECT ENQUIRY — SAMAR DIGITAL 2.0
+
+👤 CONTACT
+Name: ${name}
+Business / Brand: ${business||"Not provided"}
+WhatsApp: ${phone}
+Email: ${email||"Not provided"}
+
+🛠️ PROJECT
+Type: ${project}
+
+🎯 REQUIREMENT
+${problem}
+
+💰 BUDGET
+${budget}
+
+⏱️ TIMELINE
+${timeline}
+
+🔗 EXISTING LINK
+${link}
+
+— Submitted via SamAr Digital 2.0`;
+
+const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message);
+window.location.href=url;
+});
+</script>
+</body>
+</html>
