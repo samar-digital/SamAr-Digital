@@ -1,232 +1,652 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="SamAr Digital — a remote digital studio building websites, tools, digital products and growth systems.">
-<title>SamAr Digital — Build. Solve. Grow.</title>
-<link rel="icon" href="favicon.ico">
-<style>
-:root{
-  --bg:#080808; --surface:#111; --surface2:#171717; --text:#f5f5f5;
-  --muted:#a3a3a3; --line:#292929; --accent:#b7ff35; --accent2:#d9ff9a;
-  --max:1180px; --radius:22px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-a{color:inherit;text-decoration:none}
-button{font:inherit}
-.container{width:min(var(--max),calc(100% - 40px));margin:auto}
-header{position:sticky;top:0;z-index:1000;background:rgba(8,8,8,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)}
-.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:900;letter-spacing:-.04em;font-size:1.1rem}
-.logo span{color:var(--accent)}
-.navlinks{display:flex;gap:24px;list-style:none}
-.navlinks a{font-size:.9rem;color:#bbb;transition:.25s}
-.navlinks a:hover{color:#fff}
-.menu{display:none;border:0;background:none;color:#fff;font-size:1.5rem}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f9fc" />
+  <meta name="description" content="BizFlow CRM helps small businesses organize customers, orders, invoices, payments, and follow-ups in one simple workspace." />
+  <title>BizFlow — Run your business with clarity</title>
+  <style>
+    :root {
+      --ink: #14213d;
+      --muted: #65718a;
+      --blue: #3867f4;
+      --blue-dark: #244bd0;
+      --pale: #eef3ff;
+      --green: #21a675;
+      --line: #e7ebf3;
+      --white: #ffffff;
+      --bg: #f7f9fc;
+      --radius: 22px;
+      --shadow: 0 20px 60px rgba(30, 51, 95, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .announcement {
+      background: #14213d; color: #eaf0ff; text-align: center;
+      font-size: 13px; padding: 9px 16px;
+    }
+    .announcement span { color: #9eb5ff; font-weight: 700; }
+    header {
+      position: sticky; top: 0; z-index: 20; background: rgba(247,249,252,.88);
+      backdrop-filter: blur(16px); border-bottom: 1px solid rgba(231,235,243,.8);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 850; letter-spacing: -.7px; font-size: 21px; }
+    .brand-mark {
+      width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center;
+      color: white; background: linear-gradient(145deg, #4d7bff, #2852db);
+      box-shadow: 0 7px 18px rgba(56,103,244,.25);
+    }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 650; color: #53617b; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-actions { display: flex; align-items: center; gap: 18px; }
+    .login-link { font-size: 14px; font-weight: 700; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border: 1px solid transparent; border-radius: 12px; padding: 12px 18px;
+      font-weight: 750; font-size: 14px; cursor: pointer; transition: .2s ease;
+    }
+    .btn-primary { color: white; background: var(--blue); box-shadow: 0 8px 20px rgba(56,103,244,.18); }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .btn-outline { background: white; border-color: #dce3f0; color: var(--ink); }
+    .btn-outline:hover { border-color: #aabcf9; color: var(--blue); }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: white; border-radius: 10px; padding: 9px 11px; }
+    .hero { padding: 78px 0 78px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 54px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px;
+      border: 1px solid #dce5ff; border-radius: 999px; background: #f0f4ff;
+      color: #355bd0; font-size: 12px; font-weight: 800; letter-spacing: .25px;
+    }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #25b784; box-shadow: 0 0 0 4px #d9f6eb; }
+    h1 { font-size: clamp(42px, 5.2vw, 65px); line-height: 1.04; letter-spacing: -3.3px; margin: 22px 0 22px; max-width: 650px; }
+    h1 .highlight { color: var(--blue); }
+    .hero-copy { color: var(--muted); font-size: 17px; line-height: 1.8; max-width: 535px; margin: 0 0 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-actions .btn { padding: 14px 20px; }
+    .microcopy { margin-top: 15px; color: #7b879d; font-size: 12px; }
+    .microcopy strong { color: #50617d; }
+    .trust-row { display: flex; align-items: center; gap: 12px; margin-top: 34px; color: #758199; font-size: 12px; }
+    .avatar-stack { display: flex; padding-left: 3px; }
+    .avatar { width: 29px; height: 29px; border-radius: 50%; margin-left: -4px; border: 2px solid var(--bg); display: grid; place-items: center; font-size: 10px; font-weight: 800; color: #33466c; background: #dce6ff; }
+    .avatar:nth-child(2) { background: #d9f2e7; } .avatar:nth-child(3) { background: #ffe8d7; } .avatar:nth-child(4) { background: #e9defe; }
+    .hero-visual { position: relative; min-width: 0; }
+    .visual-glow { position: absolute; inset: 7% -10% 0 5%; background: radial-gradient(ellipse, #dce6ff 0%, rgba(220,230,255,0) 68%); filter: blur(8px); }
+    .dashboard {
+      position: relative; background: white; border: 1px solid #e6ebf4; border-radius: 20px;
+      box-shadow: 0 28px 80px rgba(33,55,102,.16); overflow: hidden; transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
+    }
+    .dash-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 19px; border-bottom: 1px solid #edf0f6; }
+    .dash-title { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 850; }
+    .tiny-mark { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 8px; background: var(--blue); color: white; font-size: 12px; }
+    .dash-top-right { display: flex; align-items: center; gap: 8px; }
+    .dash-search { width: 100px; height: 25px; border-radius: 7px; border: 1px solid #e9edf5; background: #fafbfe; }
+    .dash-profile { width: 26px; height: 26px; border-radius: 50%; background: #f3d6c8; }
+    .dash-body { display: grid; grid-template-columns: 112px 1fr; min-height: 355px; }
+    .dash-side { border-right: 1px solid #edf0f6; padding: 18px 10px; }
+    .side-label { font-size: 8px; color: #a2acc0; font-weight: 800; letter-spacing: 1px; margin: 0 0 10px 8px; }
+    .side-item { font-size: 9px; color: #78849a; padding: 9px 8px; border-radius: 7px; margin-bottom: 3px; display: flex; align-items: center; gap: 7px; }
+    .side-item.active { background: #eef3ff; color: var(--blue); font-weight: 800; }
+    .side-icon { width: 12px; text-align: center; font-size: 11px; }
+    .dash-main { padding: 20px 18px; min-width: 0; }
+    .dash-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .dash-heading h3 { margin: 0; font-size: 17px; letter-spacing: -.5px; }
+    .dash-heading p { margin: 3px 0 0; color: #8a95a9; font-size: 9px; }
+    .period { border: 1px solid #e7ebf3; border-radius: 7px; padding: 6px 8px; color: #66738c; font-size: 8px; white-space: nowrap; }
+    .metric-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 17px; }
+    .metric { border: 1px solid #edf0f6; border-radius: 10px; padding: 11px 10px; min-width: 0; }
+    .metric-label { color: #8a95a9; font-size: 8px; }
+    .metric-value { font-size: 17px; font-weight: 850; letter-spacing: -.7px; margin-top: 5px; white-space: nowrap; }
+    .metric-change { color: var(--green); font-size: 8px; margin-top: 3px; }
+    .chart-card { border: 1px solid #edf0f6; border-radius: 10px; padding: 12px; margin-top: 10px; }
+    .chart-title { display: flex; align-items: center; justify-content: space-between; font-size: 10px; font-weight: 800; }
+    .chart-title span { color: #9aa4b7; font-size: 8px; font-weight: 600; }
+    .chart { width: 100%; height: 105px; margin-top: 8px; overflow: visible; }
+    .chart-labels { display: flex; justify-content: space-between; color: #a0a9bb; font-size: 7px; }
+    .dash-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .mini-card { border: 1px solid #edf0f6; border-radius: 10px; padding: 10px; }
+    .mini-title { font-size: 9px; font-weight: 800; margin-bottom: 10px; }
+    .mini-row { display: flex; align-items: center; justify-content: space-between; font-size: 8px; margin: 7px 0; color: #68758e; gap: 8px; }
+    .status { border-radius: 999px; padding: 3px 6px; font-size: 7px; font-weight: 800; white-space: nowrap; }
+    .paid { color: #16855d; background: #e3f8ef; } .pending { color: #b87819; background: #fff3d8; }
+    .float-card { position: absolute; background: white; border: 1px solid #e7ebf3; border-radius: 14px; box-shadow: var(--shadow); padding: 13px 15px; }
+    .float-card.payment { right: -22px; top: 17%; display: flex; gap: 10px; align-items: center; }
+    .float-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: #e2f8ef; color: #139b6a; font-size: 17px; }
+    .float-label { color: #7f8aa0; font-size: 10px; }
+    .float-value { font-size: 15px; font-weight: 850; }
+    .float-card.whatsapp { left: -27px; bottom: 10%; display: flex; align-items: center; gap: 9px; }
+    .wa-icon { background: #e2f8ef; color: #169c67; width: 33px; height: 33px; border-radius: 50%; display: grid; place-items: center; font-size: 16px; }
+    .wa-copy { font-size: 10px; font-weight: 800; }
+    .wa-copy small { display: block; font-size: 8px; color: #8b96a9; font-weight: 500; margin-top: 2px; }
+    .trust-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: white; padding: 24px 0; }
+    .trust-inner { display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .trust-text { font-size: 12px; color: #8994a8; max-width: 175px; }
+    .trust-item { color: #6f7b92; font-weight: 850; font-size: 15px; letter-spacing: -.4px; opacity: .8; }
+    section { scroll-margin-top: 95px; }
+    .section { padding: 92px 0; }
+    .section-heading { text-align: center; max-width: 650px; margin: 0 auto 44px; }
+    .section-kicker { color: var(--blue); font-size: 12px; font-weight: 850; text-transform: uppercase; letter-spacing: 1.5px; }
+    h2 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -1.8px; line-height: 1.13; margin: 12px 0 14px; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .feature-card { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 27px; transition: .2s ease; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(30,51,95,.07); border-color: #d4defd; }
+    .feature-icon { width: 45px; height: 45px; display: grid; place-items: center; border-radius: 13px; background: #edf2ff; color: var(--blue); font-size: 20px; margin-bottom: 21px; }
+    .feature-card:nth-child(2) .feature-icon { background: #e5f8f0; color: #159a68; }
+    .feature-card:nth-child(3) .feature-icon { background: #fff1df; color: #c77b20; }
+    .feature-card:nth-child(4) .feature-icon { background: #f0eaff; color: #8056d9; }
+    .feature-card:nth-child(5) .feature-icon { background: #e5f5ff; color: #2183ba; }
+    .feature-card:nth-child(6) .feature-icon { background: #ffe9ee; color: #d14b72; }
+    .feature-card h3 { margin: 0 0 9px; font-size: 17px; letter-spacing: -.4px; }
+    .feature-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .workflow-section { background: #14213d; color: white; overflow: hidden; }
+    .workflow-section .section-heading p { color: #b8c3d9; }
+    .workflow-section .section-kicker { color: #91abff; }
+    .workflow-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 65px; align-items: center; }
+    .workflow-copy h2 { max-width: 480px; }
+    .workflow-copy > p { color: #bac5d9; font-size: 15px; line-height: 1.9; max-width: 470px; }
+    .workflow-steps { display: grid; gap: 22px; margin-top: 30px; }
+    .workflow-step { display: flex; gap: 14px; align-items: flex-start; }
+    .step-num { flex: 0 0 34px; height: 34px; border: 1px solid #435372; background: #202f4c; border-radius: 11px; display: grid; place-items: center; color: #a9bdff; font-size: 12px; font-weight: 850; }
+    .workflow-step h3 { margin: 1px 0 4px; font-size: 14px; }
+    .workflow-step p { margin: 0; color: #aebbd1; font-size: 12px; line-height: 1.7; }
+    .workflow-panel { background: #1d2c49; border: 1px solid #344462; border-radius: 20px; padding: 24px; }
+    .panel-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #354561; padding-bottom: 18px; }
+    .panel-top strong { font-size: 13px; }
+    .panel-top span { font-size: 10px; color: #aebbd1; background: #2a3b5b; border-radius: 7px; padding: 6px 9px; }
+    .task { display: flex; align-items: center; gap: 12px; padding: 17px 0; border-bottom: 1px solid #30415e; }
+    .task:last-child { border: 0; padding-bottom: 0; }
+    .task-check { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: #244e4a; color: #64d8ad; font-size: 13px; }
+    .task-info { flex: 1; }
+    .task-info strong { display: block; font-size: 12px; font-weight: 750; }
+    .task-info small { display: block; font-size: 10px; color: #a8b5cb; margin-top: 3px; }
+    .task-time { color: #b6c4dc; font-size: 10px; white-space: nowrap; }
+    .whatsapp-section { padding: 92px 0; }
+    .whatsapp-box { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; background: #eef8f3; border: 1px solid #d9eee3; border-radius: 26px; padding: 52px; }
+    .whatsapp-box h2 { max-width: 440px; }
+    .whatsapp-box p { color: #637a70; font-size: 14px; line-height: 1.9; }
+    .wa-bullets { display: grid; gap: 11px; padding: 0; list-style: none; margin: 22px 0 26px; }
+    .wa-bullets li { display: flex; gap: 10px; color: #405d50; font-size: 13px; }
+    .wa-bullets li span { color: #159a68; font-weight: 900; }
+    .phone-wrap { display: flex; justify-content: center; }
+    .phone { width: min(290px, 100%); border: 8px solid #1a2a35; border-radius: 32px; background: white; overflow: hidden; box-shadow: 0 22px 45px rgba(27,69,49,.15); }
+    .phone-top { background: #087c62; color: white; padding: 16px 14px 13px; display: flex; align-items: center; gap: 10px; }
+    .phone-avatar { width: 33px; height: 33px; background: #d6f3e4; color: #087c62; border-radius: 50%; display: grid; place-items: center; font-weight: 900; }
+    .phone-top strong { display: block; font-size: 11px; }
+    .phone-top small { display: block; font-size: 9px; opacity: .8; margin-top: 2px; }
+    .chat { background: #edf4ef; padding: 18px 11px 16px; min-height: 300px; }
+    .bubble { max-width: 92%; padding: 10px 11px; border-radius: 10px; background: white; color: #263d35; font-size: 10px; line-height: 1.7; box-shadow: 0 1px 1px rgba(0,0,0,.04); margin-bottom: 10px; }
+    .bubble.user { margin-left: auto; background: #d8f8c8; }
+    .bubble small { display: block; text-align: right; color: #7c9386; font-size: 8px; margin-top: 3px; }
+    .chat-input { background: white; border-radius: 20px; color: #9daaa3; padding: 9px 12px; font-size: 9px; margin-top: 12px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 1000px; margin: 0 auto; }
+    .price-card { border: 1px solid var(--line); border-radius: 20px; background: white; padding: 28px; position: relative; }
+    .price-card.featured { border: 2px solid var(--blue); box-shadow: 0 18px 45px rgba(56,103,244,.10); }
+    .popular { position: absolute; top: -13px; right: 20px; background: var(--blue); color: white; border-radius: 999px; padding: 5px 10px; font-size: 9px; font-weight: 850; }
+    .price-name { font-weight: 850; font-size: 16px; }
+    .price-desc { color: var(--muted); font-size: 12px; margin: 7px 0 22px; min-height: 38px; }
+    .price { font-size: 35px; font-weight: 900; letter-spacing: -1.8px; }
+    .price small { font-size: 11px; letter-spacing: 0; color: #8490a4; font-weight: 600; }
+    .price-note { font-size: 10px; color: #8a95a9; margin: 3px 0 22px; }
+    .price-card .btn { width: 100%; }
+    .price-features { list-style: none; padding: 20px 0 0; margin: 20px 0 0; border-top: 1px solid var(--line); display: grid; gap: 12px; }
+    .price-features li { color: #5d6a82; font-size: 12px; display: flex; gap: 9px; }
+    .price-features span { color: var(--green); font-weight: 900; }
+    .faq-wrap { max-width: 790px; margin: 0 auto; }
+    details { border-bottom: 1px solid var(--line); padding: 19px 0; }
+    summary { cursor: pointer; font-weight: 800; font-size: 14px; list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--blue); font-size: 21px; line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: 13px 30px 0 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .final-cta { padding: 25px 0 90px; }
+    .cta-box { text-align: center; border-radius: 26px; padding: 62px 25px; background: linear-gradient(135deg, #2f5ce9, #4977ff); color: white; position: relative; overflow: hidden; }
+    .cta-box::before, .cta-box::after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; width: 350px; height: 350px; }
+    .cta-box::before { top: -230px; left: -70px; } .cta-box::after { bottom: -260px; right: -40px; }
+    .cta-box h2 { position: relative; z-index: 1; max-width: 640px; margin: 0 auto 15px; }
+    .cta-box p { position: relative; z-index: 1; color: #e0e8ff; font-size: 14px; margin: 0 auto 25px; max-width: 520px; }
+    .cta-box .btn { position: relative; z-index: 1; background: white; color: var(--blue); }
+    footer { background: white; border-top: 1px solid var(--line); padding: 35px 0 24px; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 35px; padding-bottom: 28px; }
+    .footer-brand p { max-width: 300px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .footer-links { display: flex; gap: 65px; }
+    .footer-col strong { display: block; font-size: 12px; margin-bottom: 13px; }
+    .footer-col a { display: block; color: #77839a; font-size: 12px; margin: 9px 0; }
+    .footer-col a:hover { color: var(--blue); }
+    .footer-bottom { border-top: 1px solid var(--line); padding-top: 19px; display: flex; justify-content: space-between; gap: 20px; color: #8994a8; font-size: 11px; }
+    .toast { position: fixed; bottom: 22px; left: 50%; transform: translate(-50%, 20px); background: #14213d; color: white; padding: 13px 18px; border-radius: 12px; box-shadow: var(--shadow); font-size: 13px; opacity: 0; pointer-events: none; transition: .25s ease; z-index: 100; max-width: calc(100% - 30px); text-align: center; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    @media (max-width: 980px) {
+      .nav-links { gap: 17px; }
+      .hero-grid { gap: 30px; }
+      h1 { letter-spacing: -2.5px; }
+      .float-card.payment { right: -8px; }
+      .float-card.whatsapp { left: -8px; }
+      .whatsapp-box { padding: 36px; gap: 30px; }
+      .footer-links { gap: 35px; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, 560px); }
+      .nav { min-height: 67px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-actions { gap: 10px; }
+      .nav-actions .login-link { display: none; }
+      .nav-actions .btn { padding: 10px 12px; font-size: 12px; }
+      .nav-links { display: none; position: absolute; left: 16px; right: 16px; top: 64px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 15px; padding: 15px; flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 10px; border-radius: 8px; }
+      .nav-links a:hover { background: #f4f6ff; }
+      .hero { padding: 54px 0 55px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+      h1 { font-size: clamp(42px, 11vw, 58px); letter-spacing: -2.5px; }
+      .hero-copy { font-size: 15px; }
+      .hero-visual { width: calc(100% - 8px); margin: 0 auto; }
+      .dashboard { transform: none; }
+      .float-card.payment { right: -6px; top: 11%; }
+      .float-card.whatsapp { left: -6px; bottom: 5%; }
+      .dash-body { grid-template-columns: 88px 1fr; min-height: 320px; }
+      .dash-side { padding: 15px 6px; }
+      .side-item { padding: 8px 5px; font-size: 8px; }
+      .dash-main { padding: 15px 11px; }
+      .metric { padding: 9px 7px; }
+      .metric-value { font-size: 14px; }
+      .trust-inner { justify-content: center; flex-wrap: wrap; gap: 17px 25px; }
+      .trust-text { max-width: none; width: 100%; text-align: center; }
+      .trust-item { font-size: 13px; }
+      .section { padding: 68px 0; }
+      .feature-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .feature-card { padding: 20px; }
+      .workflow-grid { grid-template-columns: 1fr; gap: 35px; }
+      .whatsapp-section { padding: 65px 0; }
+      .whatsapp-box { grid-template-columns: 1fr; padding: 28px 22px; gap: 30px; }
+      .whatsapp-box h2 { font-size: 34px; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 430px; gap: 22px; }
+      .price-desc { min-height: 0; }
+      .footer-top { flex-direction: column; }
+      .footer-links { width: 100%; justify-content: space-between; gap: 20px; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+      .cta-box { padding: 48px 20px; }
+    }
+    @media (max-width: 430px) {
+      .announcement { font-size: 11px; }
+      .brand { font-size: 19px; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .trust-row { align-items: flex-start; }
+      .dash-top { padding: 12px; }
+      .dash-search { display: none; }
+      .dash-body { grid-template-columns: 74px 1fr; }
+      .side-label { margin-left: 4px; font-size: 7px; }
+      .side-item { font-size: 7px; gap: 3px; }
+      .side-icon { font-size: 9px; width: 10px; }
+      .dash-main { padding: 12px 8px; }
+      .dash-heading h3 { font-size: 14px; }
+      .dash-heading p { font-size: 8px; }
+      .metric-grid { gap: 5px; }
+      .metric { padding: 8px 5px; }
+      .metric-label { font-size: 7px; }
+      .metric-value { font-size: 12px; }
+      .metric-change { font-size: 7px; }
+      .chart-card { padding: 8px; }
+      .chart { height: 82px; }
+      .dash-bottom { gap: 5px; }
+      .mini-card { padding: 7px; }
+      .mini-row { font-size: 7px; }
+      .float-card { padding: 9px 10px; }
+      .float-card.payment { right: -4px; }
+      .float-card.whatsapp { left: -4px; }
+      .float-icon, .wa-icon { width: 28px; height: 28px; font-size: 13px; }
+      .float-value { font-size: 12px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card { padding: 22px; }
+      .footer-links { gap: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
 
-.hero{min-height:calc(100vh - 74px);display:grid;place-items:center;position:relative;overflow:hidden}
-.orb{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(183,255,53,.16),transparent 68%);filter:blur(12px);animation:float 7s ease-in-out infinite}
-.orb.one{left:-250px;top:5%}.orb.two{right:-280px;bottom:-10%;animation-delay:-3s}
-@keyframes float{50%{transform:translateY(-28px) scale(1.05)}}
-.hero-inner{text-align:center;max-width:900px;position:relative;z-index:1;padding:100px 0}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:7px 13px;color:#cfcfcf;font-size:.78rem;margin-bottom:24px;background:rgba(255,255,255,.025)}
-.dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 18px var(--accent)}
-h1{font-size:clamp(4rem,10vw,8.5rem);line-height:.88;letter-spacing:-.075em;font-weight:950}
-.gradient{background:linear-gradient(120deg,#fff 25%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{max-width:680px;margin:28px auto 34px;color:#aaa;font-size:1.12rem}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.btn{padding:13px 20px;border-radius:999px;border:1px solid var(--line);display:inline-flex;align-items:center;gap:8px;font-weight:750;transition:.25s}
-.btn.primary{background:var(--accent);color:#080808;border-color:var(--accent)}
-.btn:hover{transform:translateY(-3px)}
-.btn.secondary:hover{border-color:#555;background:#151515}
+/* Supabase auth modal and in-file workspace */
+.auth-overlay{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(13,24,45,.62);backdrop-filter:blur(7px)}.auth-overlay.open{display:flex}.auth-card{position:relative;width:min(100%,450px);max-height:90vh;overflow:auto;background:#fff;border:1px solid #e3e9f3;border-radius:22px;padding:28px;box-shadow:0 25px 80px #07142d44;color:#17233d}.auth-close{position:absolute;right:14px;top:14px;width:35px;height:35px;border:1px solid #e2e8f1;border-radius:10px;background:white;font-size:22px;cursor:pointer}.auth-card h2{font-size:28px;letter-spacing:-.8px;margin:0 35px 7px 0}.auth-sub{color:#71809a;font-size:13px;margin:0 0 18px}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#f1f4fa;padding:4px;border-radius:11px;margin:18px 0}.auth-tab{border:0;background:transparent;padding:10px;border-radius:8px;cursor:pointer;font-weight:700;color:#66748c}.auth-tab.active{background:white;color:#17233d;box-shadow:0 2px 8px #1b2b4910}.auth-field{display:block;margin:12px 0}.auth-field span{display:block;font-size:12px;font-weight:700;margin-bottom:6px}.auth-field input{width:100%;box-sizing:border-box;border:1px solid #dce4ef;border-radius:10px;padding:12px;font:inherit;outline:none}.auth-field input:focus{border-color:#7895ff;box-shadow:0 0 0 3px #eaf0ff}.auth-row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;margin:12px 0 17px}.auth-link{border:0;background:none;color:#345de7;cursor:pointer;font-weight:700}.auth-submit,.auth-google{width:100%;justify-content:center;min-height:44px}.auth-google{margin-top:12px;background:#fff;color:#25344d;border:1px solid #dce4ef;box-shadow:none}.auth-divider{text-align:center;color:#97a2b5;font-size:11px;margin:16px 0 4px}.auth-msg{display:none;border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.5;margin:12px 0}.auth-msg.show{display:block}.auth-msg.error{background:#fff0f0;color:#a12d2d}.auth-msg.success{background:#eaf9f1;color:#16744e}.auth-hide{display:none!important}.auth-note{font-size:10px;color:#8a95a8;line-height:1.5;margin-top:16px}.bizflow-workspace{padding:55px 0;min-height:65vh}.workspace-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:22px 0}.workspace-card{padding:22px;border:1px solid #e2e8f1;background:white;border-radius:16px}.workspace-card small{color:#71809a}.workspace-card strong{display:block;font-size:26px;margin-top:8px}.workspace-head{display:flex;justify-content:space-between;align-items:center;gap:15px}.workspace-panel{padding:22px;border:1px solid #e2e8f1;border-radius:16px;background:white;color:#71809a;font-size:13px;line-height:1.7}@media(max-width:600px){.auth-card{padding:23px 19px}.workspace-grid{grid-template-columns:1fr}.workspace-head{align-items:flex-start;flex-direction:column}}
 
-.section{padding:110px 0}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
-.kicker{color:var(--accent);text-transform:uppercase;letter-spacing:.15em;font-size:.72rem;font-weight:800}
-h2{font-size:clamp(2.3rem,5vw,4.5rem);line-height:.95;letter-spacing:-.055em;margin-top:8px}
-.section-head p{max-width:420px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:linear-gradient(145deg,#141414,#0d0d0d);border:1px solid var(--line);border-radius:var(--radius);padding:28px;min-height:240px;transition:.3s;position:relative;overflow:hidden}
-.card:after{content:"";position:absolute;width:140px;height:140px;background:radial-gradient(circle,rgba(183,255,53,.1),transparent 70%);right:-60px;top:-60px}
-.card:hover{transform:translateY(-7px);border-color:#454545}
-.num{color:#666;font-size:.75rem;font-weight:800}
-.card h3{font-size:1.35rem;margin:45px 0 9px;letter-spacing:-.03em}
-.card p{color:#999;font-size:.92rem}
-.arrow{position:absolute;bottom:25px;right:27px;color:var(--accent)}
-
-.work-card{min-height:360px;padding:0;display:flex;flex-direction:column}
-.project-visual{height:190px;background:linear-gradient(135deg,#1c1c1c,#0a0a0a);display:grid;place-items:center;border-bottom:1px solid var(--line);font-weight:900;font-size:2rem;letter-spacing:-.05em}
-.project-body{padding:22px}
-.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}
-.tag{font-size:.68rem;border:1px solid #303030;padding:4px 8px;border-radius:999px;color:#aaa}
-
-.about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about p{color:#aaa;font-size:1.05rem;margin-top:20px}
-.statement{font-size:clamp(2rem,4vw,4rem);line-height:1;letter-spacing:-.05em}
-.statement span{color:#666}
-
-.cta{border:1px solid #343434;border-radius:30px;padding:70px 40px;text-align:center;background:radial-gradient(circle at center,rgba(183,255,53,.09),transparent 55%),#101010}
-.cta p{color:#999;max-width:600px;margin:20px auto 28px}
-
-footer{border-top:1px solid var(--line);padding:35px 0;color:#777}
-.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
-.social{display:flex;gap:16px}
-.social a:hover{color:var(--accent)}
-
-.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}
-.reveal.show{opacity:1;transform:none}
-
-@media(max-width:800px){
-  .navlinks{display:none;position:absolute;top:74px;left:0;right:0;background:#090909;border-bottom:1px solid var(--line);padding:20px;flex-direction:column}
-  .navlinks.open{display:flex}.menu{display:block}
-  .grid{grid-template-columns:1fr}.about{grid-template-columns:1fr}
-  .section-head{display:block}.section-head p{margin-top:18px}
-  .hero-inner{padding:75px 0}
-  .footer-row{flex-direction:column;align-items:flex-start}
-}
-</style>
+  </style>
 </head>
 <body>
+  <div class="announcement">A clearer way to run your business <span>— coming soon</span></div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="BizFlow home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8 12 2.5 2.5L16.5 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        BizFlow
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#whatsapp">WhatsApp</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="login-link" href="#get-started" data-demo="Login">Log in</a>
+        <a class="btn btn-primary" href="#get-started" data-demo="Get started">Get started <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
 
-<header>
-  <div class="container nav">
-    <a class="logo" href="#start">SAM<span>AR</span> DIGITAL</a>
-    <button class="menu" id="menu" aria-label="Open menu">☰</button>
-    <nav>
-      <ul class="navlinks" id="navlinks">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#tools">Tools</a></li>
-        <li><a href="#studio">Studio</a></li>
-        <li><a href="#marketplace">Marketplace</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR BUSINESS, IN BETTER ORDER</div>
+          <h1>Less chasing.<br />More <span class="highlight">growing.</span></h1>
+          <p class="hero-copy">Keep customer details, orders, invoices, and pending payments organized in one simple workspace—so you can spend less time managing paperwork and more time moving your business forward.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#get-started" data-demo="Get early access">Get early access <span aria-hidden="true">→</span></a>
+            <a class="btn btn-outline" href="#features"><span aria-hidden="true">▷</span> Explore features</a>
+          </div>
+          <div class="microcopy">Designed for small businesses. <strong>Built for everyday work.</strong></div>
+          <div class="trust-row">
+            <div class="avatar-stack" aria-hidden="true"><span class="avatar">S</span><span class="avatar">M</span><span class="avatar">A</span><span class="avatar">+</span></div>
+            <span>A simpler way to stay on top of the details.</span>
+          </div>
+        </div>
 
-<main>
-<section class="hero" id="start">
-  <div class="orb one"></div><div class="orb two"></div>
-  <div class="container hero-inner reveal">
-    <div class="eyebrow"><span class="dot"></span> Remote Digital Studio · SamAr 2.0</div>
-    <h1>BUILD.<br><span class="gradient">SOLVE.</span><br>GROW.</h1>
-    <p>We build digital experiences, practical tools and growth systems for businesses, creators and people solving real problems.</p>
-    <div class="actions">
-      <a class="btn primary" href="#work">Explore SamAr ↗</a>
-      <a class="btn secondary" href="#contact">Start a Project</a>
+        <div class="hero-visual" aria-label="Illustration of a business dashboard">
+          <div class="visual-glow"></div>
+          <div class="dashboard">
+            <div class="dash-top">
+              <div class="dash-title"><span class="tiny-mark">B</span> BizFlow <span style="color:#9aa5b9;font-weight:500">/ Overview</span></div>
+              <div class="dash-top-right"><div class="dash-search"></div><div class="dash-profile"></div></div>
+            </div>
+            <div class="dash-body">
+              <aside class="dash-side">
+                <div class="side-label">WORKSPACE</div>
+                <div class="side-item active"><span class="side-icon">▦</span> Overview</div>
+                <div class="side-item"><span class="side-icon">♙</span> Customers</div>
+                <div class="side-item"><span class="side-icon">▤</span> Invoices</div>
+                <div class="side-item"><span class="side-icon">□</span> Orders</div>
+                <div class="side-item"><span class="side-icon">↻</span> Follow-ups</div>
+                <div class="side-label" style="margin-top:22px">MANAGE</div>
+                <div class="side-item"><span class="side-icon">⚙</span> Settings</div>
+              </aside>
+              <div class="dash-main">
+                <div class="dash-heading"><div><h3>Good morning 👋</h3><p>Here’s your business at a glance.</p></div><span class="period">This month⌄</span></div>
+                <div class="metric-grid">
+                  <div class="metric"><div class="metric-label">Revenue recorded</div><div class="metric-value">₹84,500</div><div class="metric-change">↗ Sample data</div></div>
+                  <div class="metric"><div class="metric-label">To collect</div><div class="metric-value">₹12,800</div><div class="metric-change" style="color:#c58a2a">3 pending</div></div>
+                  <div class="metric"><div class="metric-label">Active orders</div><div class="metric-value">24</div><div class="metric-change">Across customers</div></div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-title">Business activity <span>Illustrative preview</span></div>
+                  <svg class="chart" viewBox="0 0 420 120" preserveAspectRatio="none" role="img" aria-label="Illustrative business activity chart">
+                    <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4d75f6" stop-opacity=".23"/><stop offset="100%" stop-color="#4d75f6" stop-opacity="0"/></linearGradient></defs>
+                    <g stroke="#edf0f6" stroke-width="1"><path d="M0 20H420M0 50H420M0 80H420M0 110H420"/></g>
+                    <path d="M0 92 C24 86 32 96 54 76 S88 78 108 62 S142 76 164 52 S204 66 222 45 S255 58 278 34 S318 52 338 25 S380 44 420 12 L420 120 L0 120Z" fill="url(#area)"/>
+                    <path d="M0 92 C24 86 32 96 54 76 S88 78 108 62 S142 76 164 52 S204 66 222 45 S255 58 278 34 S318 52 338 25 S380 44 420 12" fill="none" stroke="#4d75f6" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="338" cy="25" r="4" fill="#fff" stroke="#4d75f6" stroke-width="2.5"/>
+                  </svg>
+                  <div class="chart-labels"><span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span></div>
+                </div>
+                <div class="dash-bottom">
+                  <div class="mini-card"><div class="mini-title">Recent invoices</div><div class="mini-row"><span>INV-1042</span><span class="status paid">Paid</span></div><div class="mini-row"><span>INV-1043</span><span class="status pending">Pending</span></div></div>
+                  <div class="mini-card"><div class="mini-title">Follow-up queue</div><div class="mini-row"><span>Payment reminder</span><span>Today</span></div><div class="mini-row"><span>Order update</span><span>Tomorrow</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card payment"><span class="float-icon">✓</span><div><div class="float-label">Payment status</div><div class="float-value">Easy to track</div></div></div>
+          <div class="float-card whatsapp"><span class="wa-icon">◉</span><div class="wa-copy">Stay in the loop<small>Follow-ups in one place</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-inner">
+        <div class="trust-text">One workspace for the moving parts of your business</div>
+        <div class="trust-item">CUSTOMERS</div><div class="trust-item">ORDERS</div><div class="trust-item">INVOICES</div><div class="trust-item">PAYMENTS</div><div class="trust-item">FOLLOW-UPS</div>
+      </div>
+    </div>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Everything in its place</div>
+          <h2>Small details. Big difference.</h2>
+          <p>Bring the everyday tasks that keep your business running into one clear, connected workflow.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card"><div class="feature-icon">♙</div><h3>Customer records</h3><p>Keep contact details, notes, and customer history organized instead of scattered across chats and notebooks.</p></article>
+          <article class="feature-card"><div class="feature-icon">▤</div><h3>Invoices & bills</h3><p>Keep invoice and purchase-bill records together, with a clearer view of what’s paid and what still needs attention.</p></article>
+          <article class="feature-card"><div class="feature-icon">□</div><h3>Order tracking</h3><p>Know what’s in progress, what’s completed, and what needs your next action—without hunting through old messages.</p></article>
+          <article class="feature-card"><div class="feature-icon">↻</div><h3>Follow-up reminders</h3><p>Build a reliable follow-up habit for pending payments, customer questions, and upcoming tasks.</p></article>
+          <article class="feature-card"><div class="feature-icon">▥</div><h3>Business overview</h3><p>Get a more useful snapshot of recorded sales, pending amounts, orders, and customer activity.</p></article>
+          <article class="feature-card"><div class="feature-icon">⇧</div><h3>Import & export</h3><p>Start with the records you already have. Importing and exporting tools can help reduce repetitive data entry.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section workflow-section" id="how-it-works">
+      <div class="container workflow-grid">
+        <div class="workflow-copy">
+          <div class="section-kicker">A calmer workflow</div>
+          <h2>Know what needs attention next.</h2>
+          <p>BizFlow is being designed to make daily business administration easier to understand and easier to act on—not to add another complicated system to your day.</p>
+          <div class="workflow-steps">
+            <div class="workflow-step"><div class="step-num">01</div><div><h3>Bring your records together</h3><p>Keep customer, invoice, order, and payment information organized in a single workspace.</p></div></div>
+            <div class="workflow-step"><div class="step-num">02</div><div><h3>Spot pending work</h3><p>See which payments, orders, or customer follow-ups may need your attention.</p></div></div>
+            <div class="workflow-step"><div class="step-num">03</div><div><h3>Take the next step</h3><p>Use a clear view of your records to follow up, update statuses, and plan your day.</p></div></div>
+          </div>
+        </div>
+        <div class="workflow-panel">
+          <div class="panel-top"><strong>Today’s follow-up list</strong><span>Example preview</span></div>
+          <div class="task"><div class="task-check">✓</div><div class="task-info"><strong>Review pending invoice</strong><small>Customer · INV-1043</small></div><div class="task-time">10:30 AM</div></div>
+          <div class="task"><div class="task-check">↗</div><div class="task-info"><strong>Confirm order details</strong><small>Order · #ORD-208</small></div><div class="task-time">12:00 PM</div></div>
+          <div class="task"><div class="task-check">↻</div><div class="task-info"><strong>Follow up with customer</strong><small>Customer conversation</small></div><div class="task-time">2:00 PM</div></div>
+          <div class="task"><div class="task-check">▤</div><div class="task-info"><strong>Record a purchase bill</strong><small>Expenses · Supplier record</small></div><div class="task-time">4:00 PM</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="whatsapp-section" id="whatsapp">
+      <div class="container">
+        <div class="whatsapp-box">
+          <div>
+            <div class="section-kicker" style="color:#168b60">Designed around your day</div>
+            <h2>Your business workflow, closer to your conversations.</h2>
+            <p>WhatsApp-based access is part of the product vision: check selected records, receive reminders, and ask for useful summaries through a familiar channel—when securely supported.</p>
+            <ul class="wa-bullets">
+              <li><span>✓</span> Payment and task reminders</li>
+              <li><span>✓</span> Quick business summaries</li>
+              <li><span>✓</span> Secure identity checks before showing private records</li>
+            </ul>
+            <a class="btn btn-primary" href="#get-started" data-demo="WhatsApp updates">Get product updates <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="phone-wrap">
+            <div class="phone" aria-label="Illustrative WhatsApp conversation preview">
+              <div class="phone-top"><div class="phone-avatar">B</div><div><strong>BizFlow Assistant</strong><small>Concept preview · not connected</small></div></div>
+              <div class="chat">
+                <div class="bubble">Hi! Here’s your daily business summary.<small>9:02 AM</small></div>
+                <div class="bubble user">What needs my attention today?<small>9:03 AM ✓✓</small></div>
+                <div class="bubble">You have 3 items to review:<br />• 2 pending payment records<br />• 1 order awaiting an update<br /><br />Open your secure workspace to review the details.<small>9:03 AM</small></div>
+                <div class="chat-input">Message BizFlow…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Straightforward plans</div>
+          <h2>Plans that can grow with you.</h2>
+          <p>Pricing is a preview while the product is being planned. No payment is taken on this page.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <div class="price-name">Starter</div><p class="price-desc">For getting your business records organized.</p>
+            <div class="price">Free <small>/ preview</small></div><div class="price-note">Planned entry plan</div>
+            <a class="btn btn-outline" href="#get-started" data-demo="Starter plan">Register interest</a>
+            <ul class="price-features"><li><span>✓</span> Basic customer records</li><li><span>✓</span> Invoice and order overview</li><li><span>✓</span> Simple task tracking</li></ul>
+          </article>
+          <article class="price-card featured">
+            <div class="popular">PLANNED</div>
+            <div class="price-name">Business</div><p class="price-desc">For teams managing more customers and activity.</p>
+            <div class="price">Coming soon</div><div class="price-note">Final price not announced</div>
+            <a class="btn btn-primary" href="#get-started" data-demo="Business plan">Join the early list</a>
+            <ul class="price-features"><li><span>✓</span> Expanded business records</li><li><span>✓</span> Payment follow-up workflow</li><li><span>✓</span> Reports and data tools</li></ul>
+          </article>
+          <article class="price-card">
+            <div class="price-name">Team</div><p class="price-desc">For businesses that need shared workflows.</p>
+            <div class="price">Let’s talk</div><div class="price-note">Planned for a later release</div>
+            <a class="btn btn-outline" href="#get-started" data-demo="Team plan">Request updates</a>
+            <ul class="price-features"><li><span>✓</span> Team access and permissions</li><li><span>✓</span> Shared task visibility</li><li><span>✓</span> Advanced workflow options</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" style="padding-top:25px">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">Good to know</div>
+          <h2>Frequently asked questions</h2>
+          <p>A few basics about the product vision and this early landing page.</p>
+        </div>
+        <div class="faq-wrap">
+          <details><summary>Is BizFlow available to use right now?</summary><p>This is an early landing-page concept. The actual CRM, accounts, database, and automation features still need to be built and tested.</p></details>
+          <details><summary>Can I import existing invoices and orders?</summary><p>Importing existing records is part of the planned workflow. Supported formats and import limits will be confirmed once that feature is implemented.</p></details>
+          <details><summary>Will it work through WhatsApp?</summary><p>WhatsApp integration is planned, subject to the official platform setup, approved permissions, and secure account verification. The example conversation shown here is illustrative only.</p></details>
+          <details><summary>Will my business data be private?</summary><p>Privacy and tenant-level data isolation must be built into the actual product before real business records are stored. Do not upload confidential records to this demo page.</p></details>
+          <details><summary>How can I get updates?</summary><p>Use one of the early-access buttons to register interest in the concept. This prototype does not yet submit or store your details.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="get-started">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Make room for the work that grows your business.</h2>
+          <p>BizFlow is being shaped around the real admin tasks small businesses deal with every day. Follow the journey and help shape what comes next.</p>
+          <a class="btn" href="mailto:hello@bizflow.example?subject=BizFlow%20early%20access%20interest" id="emailCta">Register your interest <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">B</span> BizFlow</a>
+          <p>A simpler way to organize customer records, orders, invoices, payments, and the follow-ups in between.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col"><strong>Product</strong><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#pricing">Pricing preview</a></div>
+          <div class="footer-col"><strong>Explore</strong><a href="#whatsapp">WhatsApp vision</a><a href="#faq">FAQs</a><a href="#get-started">Early access</a></div>
+          <div class="footer-col"><strong>Legal</strong><a href="#faq" data-demo="Privacy policy">Privacy (planned)</a><a href="#faq" data-demo="Terms of service">Terms (planned)</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> BizFlow. Product concept in development.</span><span>Illustrative UI · No live data or integrations</span></div>
+    </div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.textContent = open ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    document.querySelectorAll('[data-demo]').forEach(link => {
+      link.addEventListener('click', event => {
+        const label = link.getAttribute('data-demo');
+        if (label === 'Privacy policy' || label === 'Terms of service') return;
+        if (link.id === 'emailCta') return;
+        event.preventDefault();
+        toast.textContent = 'Thanks for your interest in BizFlow! Early access signup is not connected yet.';
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 3400);
+      });
+    });
+  </script>
+
+  <section id="bizflowWorkspace" class="bizflow-workspace auth-hide">
+    <div class="container">
+      <div class="workspace-head"><div><p class="section-kicker">YOUR WORKSPACE</p><h2 style="margin:8px 0">Business overview</h2><p id="workspaceUser" style="color:#71809a;font-size:13px">Signed in to BizFlow</p></div><button class="btn btn-outline" id="bizflowLogout" type="button">Log out</button></div>
+      <div class="workspace-grid"><div class="workspace-card"><small>Customers</small><strong>—</strong></div><div class="workspace-card"><small>Invoices to collect</small><strong>—</strong></div><div class="workspace-card"><small>Open orders</small><strong>—</strong></div></div>
+      <div class="workspace-panel"><strong style="color:#17233d">Your test workspace is ready.</strong><br>This is only the initial authenticated shell. Customer, invoice, order, and payment records are not connected to a database yet. Do not upload real client records until database permissions and business-level isolation are configured.</div>
+      <p style="margin-top:18px"><button class="btn btn-outline" id="backToSite" type="button">← Back to website</button></p>
+    </div>
+  </section>
+  <div class="auth-overlay" id="bizflowAuthOverlay" role="dialog" aria-modal="true" aria-labelledby="bizflowAuthTitle">
+    <div class="auth-card"><button class="auth-close" id="bizflowAuthClose" type="button" aria-label="Close">×</button><div class="brand" style="margin-bottom:22px"><span class="brand-mark">B</span><span>BizFlow</span></div>
+      <div class="auth-tabs" id="bizflowAuthTabs"><button class="auth-tab active" data-mode="login" type="button">Log in</button><button class="auth-tab" data-mode="signup" type="button">Create account</button></div>
+      <h2 id="bizflowAuthTitle">Welcome back</h2><p class="auth-sub" id="bizflowAuthSub">Log in to continue to your business workspace.</p><div class="auth-msg" id="bizflowAuthMsg" role="status" aria-live="polite"></div>
+      <form id="bizflowLoginForm"><label class="auth-field"><span>Email address</span><input id="bfLoginEmail" type="email" autocomplete="email" required placeholder="you@business.com"></label><label class="auth-field"><span>Password</span><input id="bfLoginPassword" type="password" autocomplete="current-password" required minlength="6" placeholder="Your password"></label><div class="auth-row"><label><input type="checkbox" checked> Keep me signed in</label><button class="auth-link" id="bfForgot" type="button">Forgot password?</button></div><button class="btn btn-primary auth-submit" type="submit">Log in securely →</button></form>
+      <form id="bizflowSignupForm" class="auth-hide"><label class="auth-field"><span>Full name</span><input id="bfSignupName" autocomplete="name" required maxlength="100" placeholder="Your name"></label><label class="auth-field"><span>Email address</span><input id="bfSignupEmail" type="email" autocomplete="email" required placeholder="you@business.com"></label><label class="auth-field"><span>Password (minimum 8 characters)</span><input id="bfSignupPassword" type="password" autocomplete="new-password" required minlength="8"></label><label class="auth-field"><span>Confirm password</span><input id="bfSignupConfirm" type="password" autocomplete="new-password" required minlength="8"></label><div class="auth-row" style="justify-content:flex-start"><label><input id="bfConsent" type="checkbox" required> I agree to the terms and privacy notice.</label></div><button class="btn btn-primary auth-submit" type="submit">Create account →</button></form>
+      <form id="bizflowResetForm" class="auth-hide"><label class="auth-field"><span>Account email</span><input id="bfResetEmail" type="email" autocomplete="email" required placeholder="you@business.com"></label><button class="btn btn-primary auth-submit" type="submit">Send reset email</button><div class="auth-row"><button class="auth-link" id="bfBackLogin" type="button">← Back to login</button></div></form>
+      <div id="bfOAuthBlock"><div class="auth-divider">or continue with</div><button class="btn auth-google" id="bfGoogleLogin" type="button">Continue with Google</button></div><p class="auth-note">Protected by Supabase Auth. Only public/publishable keys belong in browser code; never place a secret or service-role key here.</p>
     </div>
   </div>
-</section>
+  <div id="bizflowToast" class="toast" role="status" aria-live="polite"></div>
 
-<section class="section" id="work">
-<div class="container">
-  <div class="section-head reveal">
-    <div><div class="kicker">01 / Real Work</div><h2>Built for the real world.</h2></div>
-    <p>No imaginary case studies. This space is for actual websites, products and experiments built by SamAr.</p>
-  </div>
-  <div class="grid">
-    <article class="card work-card reveal"><div class="project-visual">INAR</div><div class="project-body"><h3>INAR Clothing</h3><p>Luxury/minimal e-commerce experience with Kashmiri-inspired positioning.</p><div class="tags"><span class="tag">E-commerce</span><span class="tag">Brand</span><span class="tag">Web</span></div></div></article>
-    <article class="card work-card reveal"><div class="project-visual">ARTCRAFT</div><div class="project-body"><h3>ArtCraft Hangers</h3><p>Product enquiry experience designed around WhatsApp conversion.</p><div class="tags"><span class="tag">Landing Page</span><span class="tag">Conversion</span><span class="tag">WhatsApp</span></div></div></article>
-    <article class="card work-card reveal"><div class="project-visual">SAMAR</div><div class="project-body"><h3>SamAr Digital</h3><p>The evolving digital headquarters behind the studio and product ecosystem.</p><div class="tags"><span class="tag">Studio</span><span class="tag">Strategy</span><span class="tag">Brand</span></div></div></article>
-  </div>
-</div>
-</section>
 
-<section class="section" id="tools">
-<div class="container">
-  <div class="section-head reveal">
-    <div><div class="kicker">02 / Tools</div><h2>Ideas that become useful.</h2></div>
-    <p>Independent tools and software experiments built to solve specific problems.</p>
-  </div>
-  <div class="grid">
-    <article class="card reveal"><span class="num">TOOL 01</span><h3>Career Toolkit</h3><p>Practical tools for students, job seekers and professionals.</p><span class="arrow">↗</span></article>
-    <article class="card reveal"><span class="num">TOOL 02</span><h3>Examlytics</h3><p>Offline board-paper pattern analysis for focused exam preparation.</p><span class="arrow">↗</span></article>
-    <article class="card reveal"><span class="num">TOOL 03</span><h3>QRLock</h3><p>A local QR-style unlock concept built as a desktop utility.</p><span class="arrow">↗</span></article>
-    <article class="card reveal"><span class="num">TOOL 04</span><h3>Adlytic</h3><p>A marketing analysis concept for campaign, budget and performance thinking.</p><span class="arrow">↗</span></article>
-    <article class="card reveal"><span class="num">TOOL 05</span><h3>Clipper</h3><p>A creator-focused YouTube-to-clips workflow concept.</p><span class="arrow">↗</span></article>
-    <article class="card reveal"><span class="num">COMING</span><h3>More Tools</h3><p>New experiments will appear here as they become useful enough to ship.</p><span class="arrow">→</span></article>
-  </div>
-</div>
-</section>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+  (() => {
+    const SUPABASE_URL = "https://arbwjtjioxadysrzdaxf.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_MoUSR4JR0sxFMxgC1dimuQ_DAHZqeok";
+    const client = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+    const overlay=document.getElementById('bizflowAuthOverlay'), msg=document.getElementById('bizflowAuthMsg');
+    const login=document.getElementById('bizflowLoginForm'), signup=document.getElementById('bizflowSignupForm'), reset=document.getElementById('bizflowResetForm');
+    const landingMain=document.querySelector('body > main'), header=document.querySelector('body > header'), announcement=document.querySelector('.announcement'), footer=document.querySelector('body > footer'), workspace=document.getElementById('bizflowWorkspace');
+    function message(text,type='error'){msg.textContent=text;msg.className='auth-msg show '+type}
+    function clearMessage(){msg.textContent='';msg.className='auth-msg'}
+    function mode(which){clearMessage();document.getElementById('bizflowAuthTabs').classList.toggle('auth-hide',which==='reset');document.getElementById('bfOAuthBlock').classList.toggle('auth-hide',which==='reset');login.classList.toggle('auth-hide',which!=='login');signup.classList.toggle('auth-hide',which!=='signup');reset.classList.toggle('auth-hide',which!=='reset');document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===which));document.getElementById('bizflowAuthTitle').textContent=which==='login'?'Welcome back':which==='signup'?'Create your account':'Reset your password';document.getElementById('bizflowAuthSub').textContent=which==='login'?'Log in to continue to your business workspace.':which==='signup'?'Create a BizFlow account to get started.':'We’ll email you a secure password-reset link.'}
+    function open(which='login'){overlay.classList.add('open');document.body.style.overflow='hidden';mode(which)}
+    function close(){overlay.classList.remove('open');document.body.style.overflow=''}
+    function showWorkspace(user){close();[landingMain,header,announcement,footer].forEach(el=>el?.classList.add('auth-hide'));workspace.classList.remove('auth-hide');document.getElementById('workspaceUser').textContent=(user.user_metadata?.full_name||user.user_metadata?.name||user.email)+' · '+user.email;window.scrollTo(0,0)}
+    function showSite(){workspace.classList.add('auth-hide');[landingMain,header,announcement,footer].forEach(el=>el?.classList.remove('auth-hide'));window.scrollTo(0,0)}
+    document.addEventListener('click',e=>{const a=e.target.closest('a[data-demo]');if(!a)return;const label=(a.getAttribute('data-demo')||'').toLowerCase();if(/login|log in/.test(label)){e.preventDefault();e.stopImmediatePropagation();open('login')}else if(/get started|early access|starter plan|business plan|team plan|whatsapp updates/.test(label)){e.preventDefault();e.stopImmediatePropagation();open('signup')}},true);
+    document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>mode(b.dataset.mode)));
+    document.getElementById('bizflowAuthClose').addEventListener('click',close);overlay.addEventListener('click',e=>{if(e.target===overlay)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+    document.getElementById('bfForgot').addEventListener('click',()=>mode('reset'));document.getElementById('bfBackLogin').addEventListener('click',()=>mode('login'));
+    login.addEventListener('submit',async e=>{e.preventDefault();const btn=login.querySelector('[type=submit]');btn.disabled=true;try{const {data,error}=await client.auth.signInWithPassword({email:document.getElementById('bfLoginEmail').value.trim(),password:document.getElementById('bfLoginPassword').value});if(error)throw error;if(data.user)showWorkspace(data.user)}catch(err){message(err.message||'Login failed. Check your Supabase configuration.')}finally{btn.disabled=false}});
+    signup.addEventListener('submit',async e=>{e.preventDefault();const password=document.getElementById('bfSignupPassword').value;if(password!==document.getElementById('bfSignupConfirm').value)return message('Passwords do not match.');if(!document.getElementById('bfConsent').checked)return message('Please accept the terms and privacy notice.');const btn=signup.querySelector('[type=submit]');btn.disabled=true;try{const {data,error}=await client.auth.signUp({email:document.getElementById('bfSignupEmail').value.trim(),password,options:{data:{full_name:document.getElementById('bfSignupName').value.trim()},emailRedirectTo:location.href.split('#')[0]}});if(error)throw error;if(data.session&&data.user)showWorkspace(data.user);else message('Account created. Check your email for a verification link, then log in.','success')}catch(err){message(err.message||'Signup failed. Check your Supabase configuration.')}finally{btn.disabled=false}});
+    reset.addEventListener('submit',async e=>{e.preventDefault();try{const {error}=await client.auth.resetPasswordForEmail(document.getElementById('bfResetEmail').value.trim(),{redirectTo:location.href.split('#')[0]});if(error)throw error;message('If an account exists for this address, a password-reset email will be sent.','success')}catch(err){message(err.message||'Could not send reset email.')}});
+    document.getElementById('bfGoogleLogin').addEventListener('click',async()=>{try{const {error}=await client.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.href.split('#')[0]}});if(error)throw error}catch(err){message(err.message||'Google sign-in failed. Make sure Google OAuth is enabled in Supabase.')}});
+    document.getElementById('bizflowLogout').addEventListener('click',async()=>{try{const {error}=await client.auth.signOut();if(error)throw error;showSite()}catch(err){message(err.message||'Logout failed')}});document.getElementById('backToSite').addEventListener('click',showSite);
+    client.auth.getSession().then(({data,error})=>{if(!error&&data.session?.user)showWorkspace(data.session.user)});client.auth.onAuthStateChange((_event,session)=>{if(session?.user)showWorkspace(session.user)});
+  })();
+  </script>
 
-<section class="section" id="studio">
-<div class="container">
-  <div class="section-head reveal">
-    <div><div class="kicker">03 / Studio</div><h2>Custom solutions.</h2></div>
-    <p>The Studio is where SamAr works with businesses and creators on problems that need a custom digital solution.</p>
-  </div>
-  <div class="grid">
-    <article class="card reveal"><span class="num">WEB</span><h3>Web Experiences</h3><p>Landing pages, business websites, e-commerce experiences and conversion-focused interfaces.</p></article>
-    <article class="card reveal"><span class="num">GROWTH</span><h3>Growth Systems</h3><p>Lead-generation funnels, campaign strategy and conversion paths built around measurable actions.</p></article>
-    <article class="card reveal"><span class="num">AUTOMATION</span><h3>Digital Automation</h3><p>Practical AI and workflow automation for repetitive business processes.</p></article>
-  </div>
-</div>
-</section>
-
-<section class="section" id="marketplace">
-<div class="container">
-  <div class="section-head reveal">
-    <div><div class="kicker">04 / Marketplace</div><h2>Useful things. One place.</h2></div>
-    <p>A future product layer for SamAr tools, templates, digital resources and selected recommendations.</p>
-  </div>
-  <div class="grid">
-    <article class="card reveal"><span class="num">PRODUCTS</span><h3>Digital Products</h3><p>Templates, systems and resources designed to save time and make digital work easier.</p></article>
-    <article class="card reveal"><span class="num">TOOLS</span><h3>SamAr Products</h3><p>Discover standalone tools developed under the SamAr ecosystem.</p></article>
-    <article class="card reveal"><span class="num">PICKS</span><h3>SamAr Picks</h3><p>Curated products and useful recommendations, kept separate from the core studio service layer.</p></article>
-  </div>
-</div>
-</section>
-
-<section class="section" id="about">
-<div class="container about">
-  <div class="reveal">
-    <div class="kicker">05 / About</div>
-    <div class="statement">Research.<br>Experiment.<br><span>Build.</span><br>Solve.</div>
-  </div>
-  <div class="reveal">
-    <p>SamAr Digital is being built as a remote-first digital studio — combining research, design, technology and marketing to turn problems into practical digital solutions.</p>
-    <p>The philosophy is simple: build things that are useful, document what works, learn from what doesn't, and keep improving.</p>
-    <div class="actions" style="justify-content:flex-start;margin-top:28px">
-      <a class="btn secondary" href="https://samar-digital.github.io/Portfolio/" target="_blank">View Full Portfolio ↗</a>
-    </div>
-  </div>
-</div>
-</section>
-
-<section class="section" id="contact">
-<div class="container">
-  <div class="cta reveal">
-    <div class="kicker">06 / Start</div>
-    <h2>Have a problem worth solving?</h2>
-    <p>Tell SamAr what you're trying to build, improve or launch. Let's start with the problem — then choose the right solution.</p>
-    <div class="actions">
-      <a class="btn primary" href="lead.html">Start a Project ↗</a>
-      <a class="btn secondary" href="https://instagram.com/sam_ardigital" target="_blank">Instagram</a>
-      <a class="btn secondary" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-    </div>
-  </div>
-</div>
-</section>
-</main>
-
-<footer>
-<div class="container footer-row">
-  <div>© 2026 <strong>SamAr Digital & Co.</strong> · Remote Digital Studio</div>
-  <div class="social"><a href="https://instagram.com/sam_ardigital" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/muhammad-arish-1a4401345?trk=contact-info" target="_blank">LinkedIn</a><a href="https://samar-digital.github.io/Portfolio/" target="_blank">Portfolio</a></div>
-</div>
-</footer>
-
-<script>
-const menu=document.getElementById('menu'), nav=document.getElementById('navlinks');
-menu.addEventListener('click',()=>nav.classList.toggle('open'));
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
 </body>
 </html>
